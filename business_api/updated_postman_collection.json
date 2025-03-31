@@ -1,0 +1,180 @@
+{
+    "info": {
+        "name": "Product Management API",
+        "description": "A collection for testing the Product Management RESTful API with rate limiting",
+        "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+    },
+    "item": [
+        {
+            "name": "Get All Products",
+            "request": {
+                "method": "GET",
+                "url": {
+                    "raw": "https://inventory-manager-api-tzwk.onrender.com/api/v1/api/v1/products",
+                    "host": [
+                        "https://inventory-manager-api-tzwk.onrender.com/api/v1"
+                    ],
+                    "path": [
+                        "api",
+                        "v1",
+                        "products"
+                    ]
+                },
+                "description": "Retrieve a paginated list of all products"
+            },
+            "response": []
+        },
+        {
+            "name": "Get Products with Pagination",
+            "request": {
+                "method": "GET",
+                "url": {
+                    "raw": "https://inventory-manager-api-tzwk.onrender.com/api/v1/api/v1/products?page=2",
+                    "host": [
+                        "https://inventory-manager-api-tzwk.onrender.com/api/v1"
+                    ],
+                    "path": [
+                        "api",
+                        "v1",
+                        "products"
+                    ],
+                    "query": [
+                        {
+                            "key": "page",
+                            "value": "2"
+                        }
+                    ]
+                },
+                "description": "Retrieve a specific page of products"
+            },
+            "response": []
+        },
+        {
+            "name": "Get Product by ID",
+            "request": {
+                "method": "GET",
+                "url": {
+                    "raw": "https://inventory-manager-api-tzwk.onrender.com/api/v1/api/v1/products/P001",
+                    "host": [
+                        "https://inventory-manager-api-tzwk.onrender.com/api/v1"
+                    ],
+                    "path": [
+                        "api",
+                        "v1",
+                        "products",
+                        "P001"
+                    ]
+                },
+                "description": "Get details of a specific product by ID"
+            },
+            "response": []
+        },
+        {
+            "name": "Create New Product",
+            "request": {
+                "method": "POST",
+                "url": {
+                    "raw": "https://inventory-manager-api-tzwk.onrender.com/api/v1/api/v1/products/",
+                    "host": [
+                        "https://inventory-manager-api-tzwk.onrender.com/api/v1"
+                    ],
+                    "path": [
+                        "api",
+                        "v1",
+                        "products",
+                        ""
+                    ]
+                },
+                "header": [
+                    {
+                        "key": "Content-Type",
+                        "value": "application/json"
+                    }
+                ],
+                "body": {
+                    "mode": "raw",
+                    "raw": "{\n  \"id\": \"P003\",\n  \"name\": \"Mechanical Keyboard\",\n  \"category\": \"Electronics\",\n  \"price\": 59.99,\n  \"stock_status\": \"in_stock\",\n  \"sku\": \"MK-003\",\n  \"description\": \"A mechanical keyboard with RGB lighting and tactile switches.\"\n}"
+                },
+                "description": "Create a new product in the catalog"
+            },
+            "response": []
+        },
+        {
+            "name": "Update Product",
+            "request": {
+                "method": "PUT",
+                "url": {
+                    "raw": "https://inventory-manager-api-tzwk.onrender.com/api/v1/api/v1/products/P001",
+                    "host": [
+                        "https://inventory-manager-api-tzwk.onrender.com/api/v1"
+                    ],
+                    "path": [
+                        "api",
+                        "v1",
+                        "products",
+                        "P001"
+                    ]
+                },
+                "header": [
+                    {
+                        "key": "Content-Type",
+                        "value": "application/json"
+                    }
+                ],
+                "body": {
+                    "mode": "raw",
+                    "raw": "{\n  \"name\": \"Wireless Ergonomic Mouse\",\n  \"price\": 34.99,\n  \"stock_status\": \"low_stock\"\n}"
+                },
+                "description": "Update an existing product's information"
+            },
+            "response": []
+        },
+        {
+            "name": "Delete Product",
+            "request": {
+                "method": "DELETE",
+                "url": {
+                    "raw": "https://inventory-manager-api-tzwk.onrender.com/api/v1/api/v1/products/P002",
+                    "host": [
+                        "https://inventory-manager-api-tzwk.onrender.com/api/v1"
+                    ],
+                    "path": [
+                        "api",
+                        "v1",
+                        "products",
+                        "P002"
+                    ]
+                },
+                "description": "Remove a product from the catalog"
+            },
+            "response": []
+        },
+        {
+            "name": "Invalid Product ID",
+            "request": {
+                "method": "GET",
+                "url": {
+                    "raw": "https://inventory-manager-api-tzwk.onrender.com/api/v1/api/v1/products/INVALID_ID",
+                    "host": [
+                        "https://inventory-manager-api-tzwk.onrender.com/api/v1"
+                    ],
+                    "path": [
+                        "api",
+                        "v1",
+                        "products",
+                        "INVALID_ID"
+                    ]
+                },
+                "description": "Test error handling with an invalid product ID"
+            },
+            "response": []
+        }
+    ],
+    "variable": [
+        {
+            "key": "base_url",
+            "value": "http://localhost:8000",
+            "type": "string"
+        }
+    ]
+}
