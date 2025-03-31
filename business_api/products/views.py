@@ -11,7 +11,14 @@ from rest_framework.viewsets import ModelViewSet
 
 class ProductViewSet(viewsets.ModelViewSet):
     """
-    ViewSet for managing business products with structured API responses and rate-limiting headers.
+    API endpoint for managing products.
+
+    - `GET /api/v1/products/` → List all products (with pagination, filtering, and search)
+    - `GET /api/v1/products/{id}/` → Retrieve a single product
+    - `POST /api/v1/products/` → Create a new product
+    - `PUT /api/v1/products/{id}/` → Update an existing product
+    - `DELETE /api/v1/products/{id}/` → Remove a product
+    
     """
     queryset = Product.objects.all().order_by('-created_at')
     serializer_class = ProductSerializer
