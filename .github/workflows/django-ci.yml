@@ -31,6 +31,7 @@ jobs:
 
       - name: Install Dependencies
         run: |
+          cd business_api
           pip install -r requirements.txt
           pip install pytest pytest-django pytest-cov
 
@@ -39,10 +40,10 @@ jobs:
           DATABASE_URL: postgres://test_user:test_pass@localhost:5432/test_db
         run: pytest --cov=products --cov-report=xml
 
-  deploy:
-    needs: test
-    runs-on: ubuntu-latest
-    if: github.ref == 'refs/heads/main'
-    steps:
-      - name: Trigger Render Deployment
-        run: curl -X POST ${{ secrets.RENDER_DEPLOY_HOOK }}
+#   deploy:
+#     needs: test
+#     runs-on: ubuntu-latest
+#     if: github.ref == 'refs/heads/main'
+#     steps:
+#       - name: Trigger Render Deployment
+#         run: curl -X POST ${{ secrets.RENDER_DEPLOY_HOOK }}
