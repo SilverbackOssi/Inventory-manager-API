@@ -34,12 +34,15 @@ jobs:
           pip install -r requirements.txt
           pip install pytest pytest-django pytest-cov
 
+     - name: Apply Migrations
+        run: python manage.py migrate
+
       - name: Run Tests
         env:
           DATABASE_URL: postgres://test_user:test_pass@localhost:5432/test_db
         run: |
           cd business_api
-          pytest --cov=products --cov-report=xml
+          python manage.py test
 
 #   deploy:
 #     needs: test
