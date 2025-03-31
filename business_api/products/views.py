@@ -4,6 +4,10 @@ from rest_framework.throttling import AnonRateThrottle
 from django.shortcuts import get_object_or_404
 from .models import Product
 from .serializers import ProductSerializer
+from django_filters.rest_framework import DjangoFilterBackend
+from rest_framework.filters import SearchFilter, OrderingFilter
+from rest_framework.viewsets import ModelViewSet
+
 
 class ProductViewSet(viewsets.ModelViewSet):
     """
@@ -11,6 +15,10 @@ class ProductViewSet(viewsets.ModelViewSet):
     """
     queryset = Product.objects.all().order_by('-created_at')
     serializer_class = ProductSerializer
+    filter_backends = [DjangoFilterBackend, SearchFilter, OrderingFilter]
+    filterset_fields = ['category', 'stock_status']  # Exact matches
+    search_fields = ['name', 'description']  # Text-based search
+    ordering_fields = ['price', 'created_at']  # Sorting
     throttle_classes = [AnonRateThrottle]  # Limits requests per minute per IP
 
     def list(self, request, *args, **kwargs):
