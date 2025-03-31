@@ -324,4 +324,4 @@ Removes a product from the catalog.
    python manage.py runserver
    ```
 
-5. Access the API at `http://localhost:8000/api/v1/products/`
+5. Then access the API at `http://localhost:8000/api/v1/products/`
