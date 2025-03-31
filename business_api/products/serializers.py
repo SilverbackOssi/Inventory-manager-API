@@ -6,10 +6,7 @@ class ProductSerializer(serializers.ModelSerializer):
 
     class Meta:
         model = Product
-        fields = [
-            'id', 'name', 'category', 'price', 'stock_status', 
-            'sku', 'description', 'created_at', 'updated_at'
-        ]
+        fields = '__all__' 
         read_only_fields = ['id', 'created_at', 'updated_at']  # Prevent changes to these fields
 
     def validate_name(self, value):
