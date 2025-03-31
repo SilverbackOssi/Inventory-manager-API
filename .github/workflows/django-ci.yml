@@ -31,14 +31,15 @@ jobs:
 
       - name: Install Dependencies
         run: |
-          cd business_api
           pip install -r requirements.txt
           pip install pytest pytest-django pytest-cov
 
       - name: Run Tests
         env:
           DATABASE_URL: postgres://test_user:test_pass@localhost:5432/test_db
-        run: pytest --cov=products --cov-report=xml
+        run: |
+          cd business_api
+          pytest --cov=products --cov-report=xml
 
 #   deploy:
 #     needs: test
